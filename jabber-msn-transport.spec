@@ -12,6 +12,7 @@ Source3:	jabber-msntrans.sysconfig
 Source4:	msntrans.xml
 URL:		http://www.jabber.org/
 BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	curl-devel
 BuildRequires:	jabberd14-devel
 BuildRequires:	pth-devel
@@ -33,6 +34,7 @@ u¿ytkownikami MSN.
 %prep
 %setup -qn msn-transport-%{version}
 
+%build
 %{__aclocal}
 %{__autoconf}
 %{__automake}

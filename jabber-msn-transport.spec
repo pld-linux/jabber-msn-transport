@@ -52,7 +52,7 @@ install src/msntrans.so $RPM_BUILD_ROOT%{_libdir}/jabberd14
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/jabber-msntrans
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/jabber-msntrans
 install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/jabber/msntrans.xml
-ln -sf %{_sbindir}/jabberd14 $RPM_BUILD_ROOT/%{_sbindir}/jabber-msntrans
+ln -sf %{_sbindir}/jabberd14 $RPM_BUILD_ROOT%{_sbindir}/jabber-msntrans
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -84,7 +84,7 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS README
-%{_sbindir}/*
+%attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_libdir}/jabberd14/*
 %attr(640,root,jabber) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/jabber/*
 %attr(754,root,root) /etc/rc.d/init.d/jabber-msntrans

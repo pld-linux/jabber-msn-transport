@@ -1,0 +1,11 @@
+--- configure.in~	2003-10-12 10:39:29.000000000 +0200
++++ configure.in	2004-01-25 23:21:26.491999773 +0100
+@@ -90,7 +90,7 @@
+ fi
+ CURL_LIBS="$CURL_LIBS -lcurl"
+ AC_MSG_CHECKING(for libcurl.a)
+-if test -f "$CURL_LIB_PATH/libcurl.a"; then
++if test -f "$CURL_LIB_PATH/libcurl.so"; then
+     AC_MSG_RESULT(Found);
+     LIBS="$LIBS $CURL_LIBS"
+ else

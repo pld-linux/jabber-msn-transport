@@ -32,7 +32,7 @@ case "$1" in
   start)
 	if [ ! -f /var/lock/subsys/jabber-msntrans ]; then
 		msg_starting "Jabber MSN Transport"
-		daemon jabberd14 -c /etc/jabber/msntrans.xml -B -U jabber -G jabber
+		daemon jabber-msntrans -c /etc/jabber/msntrans.xml -B -U jabber -G jabber
 		RETVAL=$?
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/jabber-msntrans
 	else

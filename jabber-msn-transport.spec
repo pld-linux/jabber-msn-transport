@@ -2,7 +2,7 @@ Summary:	MSN transport module for Jabber
 Summary(pl):	Modu³ transportowy MSN dla systemu Jabber
 Name:		jabber-msn-transport
 Version:	1.2.8rc1
-Release:	2
+Release:	3
 License:	distributable
 Group:		Applications/Communications
 Source0:	http://msn-transport.jabberstudio.org/msn-transport-%{version}.tar.gz
@@ -10,6 +10,7 @@ Source0:	http://msn-transport.jabberstudio.org/msn-transport-%{version}.tar.gz
 Source2:	jabber-msntrans.init
 Source3:	jabber-msntrans.sysconfig
 Source4:	msntrans.xml
+Patch0:		%{name}-curl-shared.patch
 URL:		http://www.jabber.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -33,6 +34,7 @@ u¿ytkownikami MSN.
 
 %prep
 %setup -qn msn-transport-%{version}
+%patch0
 
 %build
 %{__aclocal}
@@ -40,6 +42,7 @@ u¿ytkownikami MSN.
 %{__automake}
 %configure \
 	--with-pth=%{_includedir} \
+	--with-curl-libs=%{_libdir} \
 	--with-jabberd=/usr/include/jabberd14/
 %{__make}
 

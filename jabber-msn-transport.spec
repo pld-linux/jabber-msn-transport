@@ -2,7 +2,7 @@ Summary:	MSN transport module for Jabber
 Summary(pl):	Modu³ transportowy MSN dla systemu Jabber
 Name:		jabber-msn-transport
 Version:	1.2.8rc1
-Release:	1
+Release:	2
 License:	distributable
 Group:		Applications/Communications
 Source0:	http://msn-transport.jabberstudio.org/msn-transport-%{version}.tar.gz
@@ -52,6 +52,7 @@ install src/msntrans.so $RPM_BUILD_ROOT%{_libdir}/jabberd14
 install %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/jabber-msntrans
 install %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/jabber-msntrans
 install %{SOURCE4} $RPM_BUILD_ROOT%{_sysconfdir}/jabber/msntrans.xml
+ln -sf %{_sbindir}/jabberd14 $RPM_BUILD_ROOT/%{_sbindir}/jabber-msntrans
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -83,6 +84,7 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS README
+%{_sbindir}/*
 %attr(755,root,root) %{_libdir}/jabberd14/*
 %attr(640,root,jabber) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/jabber/*
 %attr(754,root,root) /etc/rc.d/init.d/jabber-msntrans

@@ -1,0 +1,5 @@
+# Customized setings for jabber-msn-transport
+
+# Define nice level for jabber-msn-transport 
+SERVICE_RUN_NICE_LEVEL="+5"
+

@@ -15,6 +15,7 @@ URL:		http://www.jabber.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	curl-devel
+BuildRequires:	expat-devel
 BuildRequires:	jabberd14-devel
 BuildRequires:	pth-devel
 PreReq:		rc-scripts
@@ -89,6 +90,6 @@ fi
 %doc AUTHORS README
 %attr(755,root,root) %{_sbindir}/*
 %attr(755,root,root) %{_libdir}/jabberd14/*
-%attr(640,root,jabber) %config(noreplace) %verify(not size mtime md5) %{_sysconfdir}/jabber/*
+%attr(640,root,jabber) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/jabber/*
 %attr(754,root,root) /etc/rc.d/init.d/jabber-msntrans
-%config(noreplace) %verify(not size mtime md5) /etc/sysconfig/jabber-msntrans
+%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/jabber-msntrans

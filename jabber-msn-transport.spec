@@ -15,9 +15,7 @@ URL:		http://www.jabber.org/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	curl-devel
-BuildRequires:	expat-devel
 BuildRequires:	jabberd14-devel
-BuildRequires:	pth-devel
 PreReq:		rc-scripts
 Requires(post):	jabber-common
 Requires(post):	perl-base

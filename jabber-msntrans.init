@@ -46,7 +46,7 @@ case "$1" in
 		rm -f /var/lock/subsys/jabber-msntrans >/dev/null 2>&1
 	else
 		msg_not_running "Jabber MSN Transport"
-	fi	
+	fi
 	;;
   restart)
 	$0 stop

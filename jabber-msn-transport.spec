@@ -16,11 +16,12 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	curl-devel
 BuildRequires:	jabberd14-devel
-PreReq:		rc-scripts
+BuildRequires:	rpmbuild(macros) >= 1.268
 Requires(post):	jabber-common
-Requires(post):	perl-base
+Requires(post):	sed >= 4.0
 Requires(post):	textutils
 Requires(post,preun):	/sbin/chkconfig
+Requires:	rc-scripts
 %requires_eq	jabberd14
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -42,7 +43,7 @@ u¿ytkownikami MSN.
 %configure \
 	--with-pth=%{_includedir} \
 	--with-curl-libs=%{_libdir} \
-	--with-jabberd=/usr/include/jabberd14/
+	--with-jabberd=/usr/include/jabberd14
 %{__make}
 
 %install
@@ -60,26 +61,20 @@ ln -sf %{_sbindir}/jabberd14 $RPM_BUILD_ROOT%{_sbindir}/jabber-msntrans
 rm -rf $RPM_BUILD_ROOT
 
 %post
-if [ -f /etc/jabber/secret ] ; then
-	SECRET=`cat /etc/jabber/secret`
+if [ -f %{_sysconfdir}/jabber/secret ] ; then
+	SECRET=`cat %{_sysconfdir}/jabber/secret`
 	if [ -n "$SECRET" ] ; then
-        	echo "Updating component authentication secret in the config file..."
-		perl -pi -e "s/>secret</>$SECRET</" /etc/jabber/msntrans.xml
+		echo "Updating component authentication secret in the config file..."
+		%{__sed} -i -e "s/>secret</>$SECRET</" %{_sysconfdir}/jabber/msntrans.xml
 	fi
 fi
 
 /sbin/chkconfig --add jabber-msntrans
-if [ -r /var/lock/subsys/jabber-msntrans ]; then
-	/etc/rc.d/init.d/jabber-msntrans restart >&2
-else
-	echo "Run \"/etc/rc.d/init.d/jabber-msntrans start\" to start Jabber msn transport."
-fi
+%service jabber-msntrans restart "Jabber msn transport"
 
 %preun
 if [ "$1" = "0" ]; then
-	if [ -r /var/lock/subsys/jabber-msntrans ]; then
-		/etc/rc.d/init.d/jabber-msntrans stop >&2
-	fi
+	%service jabber-msntrans stop
 	/sbin/chkconfig --del jabber-msntrans
 fi
 

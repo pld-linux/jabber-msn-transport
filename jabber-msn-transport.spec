@@ -2,7 +2,7 @@ Summary:	MSN transport module for Jabber
 Summary(pl):	Modu³ transportowy MSN dla systemu Jabber
 Name:		jabber-msn-transport
 Version:	1.2.8rc1
-Release:	5
+Release:	6
 License:	distributable
 Group:		Applications/Communications
 Source0:	http://msn-transport.jabberstudio.org/msn-transport-%{version}.tar.gz

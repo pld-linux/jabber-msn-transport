@@ -1,5 +1,5 @@
 Summary:	MSN transport module for Jabber
-Summary(pl.UTF-8):   Moduł transportowy MSN dla systemu Jabber
+Summary(pl.UTF-8):	Moduł transportowy MSN dla systemu Jabber
 Name:		jabber-msn-transport
 Version:	1.2.8rc1
 Release:	6
